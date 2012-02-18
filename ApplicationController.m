@@ -136,6 +136,14 @@
 		[[PBRepositoryDocumentController sharedDocumentController] openDocument:self];
 }
 
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag
+{
+    NSURL *recent = [[[PBRepositoryDocumentController sharedDocumentController] recentDocumentURLs] objectAtIndex:0];
+    NSError *error = nil;
+    [[PBRepositoryDocumentController sharedDocumentController] openDocumentWithContentsOfURL:recent display:YES error:&error];
+    return NO;
+}
+
 - (void)getUrl:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
 {
 	NSString *urlString = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
