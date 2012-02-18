@@ -39,6 +39,7 @@
 + (BOOL) isUseITerm2;
 + (BOOL) isITerm2Available;
 + (void) setITerm2Available:(BOOL)iTerm2Available;
++ (BOOL) shouldOpenRecentOnActivate;
 
 
 // Suppressed Dialog Warnings

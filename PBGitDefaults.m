@@ -31,6 +31,7 @@
 #define kSuppressedDialogWarnings @"Suppressed Dialog Warnings"
 #define kUseITerm2 @"PBUseITerm2"
 #define kITerm2Available @"PBITerm2Available"
+#define kOpenMostRecentOnActivate @"PBOpenRecentOnActivate"
 
 
 @implementation PBGitDefaults
@@ -70,6 +71,8 @@
 					  forKey:kUseITerm2];
 	[defaultValues setObject:[NSNumber numberWithBool:NO]
 					  forKey:kITerm2Available];
+    [defaultValues setObject:[NSNumber numberWithBool:NO]
+					  forKey:kOpenMostRecentOnActivate];
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 }
 
@@ -218,6 +221,11 @@
 	
 	[[NSUserDefaults standardUserDefaults] setBool:iTerm2Available forKey:kITerm2Available];
 	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (BOOL) shouldOpenRecentOnActivate
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:kOpenMostRecentOnActivate];
 }
 
 

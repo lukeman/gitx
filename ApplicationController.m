@@ -138,7 +138,7 @@
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag
 {
-    if (!flag) {
+    if ([PBGitDefaults shouldOpenRecentOnActivate] && !flag) {
         NSURL *recent = [[[PBRepositoryDocumentController sharedDocumentController] recentDocumentURLs] objectAtIndex:0];
         NSError *error = nil;
         [[PBRepositoryDocumentController sharedDocumentController] openDocumentWithContentsOfURL:recent display:YES error:&error];
